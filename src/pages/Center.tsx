@@ -1,41 +1,150 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import '../css/font.css';
-// import AiBack from '../images/AI_back.jpg';
-// import AiBack2 from '../images/Ai_Back2.jpg';
-// import AiBack3 from '../images/Ai_Back3.png';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import AiBack4 from '../images/Ai_Back4.jpg';
-
-
-
+import AiBack5 from '../images/Ai_Back5.jpg';
 
 const Center: React.FC = () => {
+    const [activeContainer, setActiveContainer] = useState(0);
+    const [direction, setDirection] = useState('');
+    const [startX, setStartX] = useState(0);
+    const [dragging, setDragging] = useState(false);
+    
+
+    const nextContainer = () => {
+        setActiveContainer((prevActiveContainer) => (prevActiveContainer + 1) % 2);
+        setDirection('right');
+    };
+
+    const prevContainer = () => {
+        setActiveContainer((prevActiveContainer) => (prevActiveContainer - 1 + 2) % 2);
+        setDirection('left');
+    };
+
+    const handleMouseDown = (e: any) => {
+        setStartX(e.clientX);
+        setDragging(true);
+    };
+
+    const handleMouseUp = () => {
+        setDragging(false);
+    };
+
+    const handleMouseMove = (e: any) => {
+        if (!dragging) return;
+
+        const moveX = e.clientX - startX;
+        if (moveX > 0) {
+            // 왼쪽으로 드래그
+            setActiveContainer((prevActiveContainer) => (prevActiveContainer - 1 + 2) % 2);
+        } else if (moveX < 0) {
+            // 오른쪽으로 드래그
+            setActiveContainer((prevActiveContainer) => (prevActiveContainer + 1) % 2);
+        }
+        setStartX(e.clientX); // 드래그가 지속될 경우를 위해 현재 위치 업데이트
+    };
+
+    const getTransformValue = () => {
+        const translateValue = activeContainer * -50; // 각 컨테이너가 전체 화면 너비를 차지한다고 가정
+        return `translateX(${translateValue}%)`;
+    };
+    {/* 마우스 이벤트 업데이트 필요함. */}
 
     return (
-        <Container>
-            {/* <ImageDiv>
-                    <Image1 src={AiBack} alt="No image." />
-                    <Image2 src={AiBack2} alt="No image." />
-                    <Image3 src={AiBack3} alt="No image." />
-            </ImageDiv> */}
-            <CntDiv>
-                <CntP>쉬운 협업툴</CntP>
-                <CntP>블루캡슐 AI에</CntP>
-                <CntP>메신저를 더하다.</CntP>
-                <br></br>
-                <CntSpan>모이면 대충 더 큰 목표를 얻을 수 있다는 내용</CntSpan>
-            </CntDiv>
-        </Container>
+        <MainContainer
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}>
+            <ArrowLeft onClick={prevContainer}>＜</ArrowLeft>
+            <SliderContainer>
+                <ContentContainer style={{ transform: getTransformValue() }}>
+                    <Container1>
+                        <CntDiv>
+                            <CntP>쉬운 협업툴</CntP>
+                            <CntP>블루캡슐 AI에</CntP>
+                            <CntP>메신저를 더하다.</CntP>
+                            <br></br>
+                            <CntSpan>메신저에 AI 를 더하여 더욱 효율적인 업무를 누리다.</CntSpan>
+                        </CntDiv>
+                    </Container1>
+                    <Container2>
+                        <CntDiv>
+                            <CntP>100대 기업 점유율 1위</CntP>
+                            <CntP>AI Assistant</CntP>
+                            <br></br>
+                            <CntSpan>더욱 효율적인 업무를 느껴보세요.</CntSpan>
+                        </CntDiv>
+                    </Container2>
+                </ContentContainer>
+            </SliderContainer>
+            <ArrowRight onClick={nextContainer}>＞</ArrowRight>
+        </MainContainer>
     );
-}
+};
+
 
 export default Center;
 
-const Container = styled.div`
+const MainContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+`;
+
+const SliderContainer = styled.div`
+    overflow: hidden;
+    width: 100%;
+    height: 850px; 
+`;
+
+const ContentContainer = styled.div`
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 200%; 
+`;
+
+const Arrow = styled.div`
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+    transition: all 0.3s ease; 
+`;
+
+const ArrowLeft = styled(Arrow)`
+    left: 20px;
+    &:hover {
+        color: rgb(0, 153, 200); 
+        background-color: rgba(0, 153, 255, 0.15); 
+        box-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+    }
+`;
+
+const ArrowRight = styled(Arrow)`
+    right: 20px;
+    &:hover {
+        color: rgb(0, 153, 200); 
+        background-color: rgba(0, 153, 255, 0.15);
+        box-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+    }
+`;
+
+const Container1 = styled.div`
     width:100%;
     height:850px;
-    margin-top:40px;
-    min-width:1500px;
     opacity:0.85;
     background-image: url(${AiBack4});
     background-repeat: no-repeat;
@@ -43,16 +152,27 @@ const Container = styled.div`
     background-position: center center;
     background-size: 100vw 900px;
 `;
+const Container2 = styled.div`
+    width:100%;
+    height:850px;
+    opacity:0.85;
+    background-image: url(${AiBack5});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 100vw 900px;
+`;
+
 
 const CntDiv = styled.div`
     position: relative;
-    width:400px;
+    width:500px;
     height:270px;
-    top:200px;
-    left: 80px;
+    top:250px;
+    left: 100px;
     `;
 
-    
+
 const CntP = styled.span`
     display:flex;
     position:relative;
@@ -72,69 +192,3 @@ const CntSpan = styled.span`
     font-size:max(20px, 18px);
     padding:15px;
 `;
-
-
-
-// const fadeInOut = keyframes`
-//     0% {
-//         opacity: 1;
-//     }
-//     25% {
-//         opacity: 0.75;
-//     }
-//     50% {
-//         opacity: 0.25;
-//     }
-//     75% {
-//         opacity: 0.75;
-//     }
-//     95% {
-//         opacity: 0.9;
-//     }
-//     100% {
-//         opacity: 1;
-//     }
-// `;
-
-// const ImageDiv = styled.div`
-//     position: relative;
-//     top:90px;
-// `;
-// const Image1 = styled.img`
-//     position: absolute;
-//     z-index:1;
-//     width:500px;
-//     height:300px;
-//     opacity: 1;
-//     right:125px;
-//     min-width: 300px;
-//     min-height:200px;
-//     border-radius: 10px;
-//     animation: ${fadeInOut} 12s linear infinite;
-// `;
-// const Image2 = styled.img`
-//     position: absolute;
-//     z-index:1;
-//     width:520px;
-//     height:300px;
-//     opacity: 1;
-//     right:750px;
-//     top:400px;
-//     min-width: 300px;
-//     min-height:200px;
-//     border-radius: 10px;
-//     animation: ${fadeInOut} 15s linear infinite;
-// `;
-// const Image3 = styled.img`
-//     position: absolute;
-//     z-index:0;
-//     right:300px;
-//     top:20px;
-//     width:700px;
-//     height:700px;
-//     opacity: 0.8;
-//     min-width: 500px;
-//     min-height:200px;
-//     border-radius: 10px;
-//     // animation: ${fadeInOut} 9s linear infinite;
-// `;
