@@ -14,8 +14,10 @@ const Tab: React.FC = () => {
                 </AdContainer>
             </AdLink>
             <Container>
+                    <LogoContainer>
+                        <BCSLogo src={BCSLogoImage} alt="No image."/>
+                    </LogoContainer>
                 <TabContainer>
-                    <BCSLogo src={BCSLogoImage} alt="No image."></BCSLogo>
                     <TabLabel>기능</TabLabel>
                     <TabLabel>요금</TabLabel>
                     <TabLabel>팀 협업</TabLabel>
@@ -36,8 +38,9 @@ const Tab: React.FC = () => {
 export default Tab;
 const FixedDiv = styled.div `
     width:100%;
-    position: fixed;
+    position:fixed;
     font-family: sh_Bold;
+    z-index:9999;
 `;
 const AdContainer = styled.div`
     display: flex;
@@ -46,7 +49,7 @@ const AdContainer = styled.div`
     justify-content: center;
     height:50px;
     min-width:900px;
-    background: linear-gradient(to right, red, white, blue);
+    background: linear-gradient(to right, rgb(255,152,152), white, rgb(0,153,255));
 `;
 const AdLink = styled.a `
     text-decoration: none;
@@ -64,33 +67,42 @@ const AdSpan2 = styled.span `
 const Container = styled.div`
     display:flex;
     width:auto;
-`;
-
-const TabContainer = styled.div`
-    display:flex; 
-    margin: auto;
-    min-width:600px;
+    height:60px;
     background-color:white;
-    padding-top:15px;
+`;
+const LogoContainer = styled.div`
+    display:flex;
+    position: relative;
+    width:120px;
+    height:50px;
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+`;
+const TabContainer = styled.div`
+    display: flex; 
+    position: relative;
+    width: 60vw;
+    margin: auto;
+    min-width: 500px;
     height: 50px;
 `;
+
 const TabLoginContainer = styled.div`
-    display:flex;
-    margin:auto;
-    width:400px;
-    height:50px;
-    margin-left:30px;
+    display: flex;
+    position: relative;
+    right: 0;
+    top:5px;
+    width: 400px;
+    height: 50px;
     justify-content: center;
     align-items: center;
-
 `;
 const BCSLogo = styled.img`
+    position: relative;
+    width:120px;
     height:40px;
     border-radius: 7.5px;
-    margin:auto;
-    min-width:100px;
-    margin-left:20px;
-    margin-right:10px;
     cursor: pointer;
 `
 const TabLabel = styled.div`
@@ -101,58 +113,67 @@ const TabLabel = styled.div`
     height:50px;
     justify-content: center;
     cursor: pointer;
-
-    color: blue;
+    font-family: sh_Light;
+    font-weight:600;
+    color: rgb(0,153,255);
     min-width:60px;
 
     &: hover {
-        color: #3366CC;
+        color: blue;
+        font-weight: bold;
         border-bottom: 3px solid blue;
     }
 `;
 
 const BtnConsult = styled.button`
-    width:max(8vw,70px);
+    width:max(5vw,70px);
     border: none;
-    height: 35px;
+    height: 40px;
     border-radius: 5px;
-    color: blue;
+    color: rgb(0,153,255);
     min-width:70px;
     font-family: sh_Light;
     font-weight: bold;
     background-color: transparent;
 
     &: hover {
-        color: #3366CC;
+        color: blue;
+        font-family:sh_Bold;
+        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
     }
 `;
 const BtnLogin = styled.button`
-    width:max(8vw,70px);
-    height: 35px;
+    width:max(5vw,70px);
+    height: 40px;
     margin-left:10px;
     border-radius: 5px;
-    border: 1px solid blue;
+    border: 1px solid rgba(55, 155, 205, 0.5);
     font-family: sh_Light;
     font-weight: bold;
-    color: blue;
+    color: rgb(0,153,255);
+    
 
     &: hover {
         color: #3366CC;
-        border: 1px solid #3366CC;
+        border: 1px solid blue;
+        font-family:sh_Bold;
+        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
     }
 `;
 const BtnRegistration = styled.button`
-width:max(8vw,70px);
-    height: 35px;
+    width:max(5vw,70px);
+    height: 40px;
     border: none;
     margin-left:10px;
     border-radius: 5px;
     font-family: sh_Light;
     font-weight: 200;
-    background-color: blue;
+    background-color: rgb(0,153,255);
     color: white;
 
     &: hover {
-        background-color: #3366CC;
+        background-color: blue;
+        font-family:sh_Bold;
+        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
     }
 `;
