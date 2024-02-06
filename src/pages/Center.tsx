@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled, {keyframes} from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import AiBack4 from '../images/Ai_Back4.jpg';
 import AiBack5 from '../images/Ai_Back5.jpg';
 import AiBack6 from '../images/Ai_Back6.jpg';
@@ -7,14 +7,35 @@ import AiBack6 from '../images/Ai_Back6.jpg';
 const Center: React.FC = () => {
     const [activeContainer, setActiveContainer] = useState(0);
     const totalContainers = 3;
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleNextClick = () => {
         setActiveContainer(prevActiveContainer => (prevActiveContainer + 1) % totalContainers);
+        restartTimer();
     };
 
     const handlePrevClick = () => {
         setActiveContainer(prevActiveContainer => (prevActiveContainer + totalContainers - 1) % totalContainers);
+        restartTimer();
     };
+
+    const restartTimer = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+        intervalRef.current = setInterval(() => {
+            setActiveContainer(prevActiveContainer => (prevActiveContainer + 1) % totalContainers);
+        }, 7000);
+    };
+
+    useEffect(() => {
+        restartTimer(); 
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current); 
+            }
+        };
+    }, []);
 
     const getTransformValue = () => {
         let translateValue = activeContainer * -33.33333;
@@ -73,6 +94,7 @@ const MainContainer = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top:35px;
 
 `;
 
@@ -233,7 +255,6 @@ const CntDiv3 = styled.div`
         margin:auto;
      }
     `;
-
 
 const CntP = styled.span`
     display:flex;
