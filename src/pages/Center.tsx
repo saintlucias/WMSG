@@ -2,60 +2,33 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import AiBack4 from '../images/Ai_Back4.jpg';
 import AiBack5 from '../images/Ai_Back5.jpg';
+import AiBack6 from '../images/Ai_Back6.jpg';
 
 const Center: React.FC = () => {
     const [activeContainer, setActiveContainer] = useState(0);
-    const [direction, setDirection] = useState('');
-    const [startX, setStartX] = useState(0);
-    const [dragging, setDragging] = useState(false);
-    
+    const totalContainers = 3;
 
-    const nextContainer = () => {
-        setActiveContainer((prevActiveContainer) => (prevActiveContainer + 1) % 2);
-        setDirection('right');
+    const handleNextClick = () => {
+        setActiveContainer(prevActiveContainer => (prevActiveContainer + 1) % totalContainers);
     };
 
-    const prevContainer = () => {
-        setActiveContainer((prevActiveContainer) => (prevActiveContainer - 1 + 2) % 2);
-        setDirection('left');
-    };
-
-    const handleMouseDown = (e: any) => {
-        setStartX(e.clientX);
-        setDragging(true);
-    };
-
-    const handleMouseUp = () => {
-        setDragging(false);
-    };
-
-    const handleMouseMove = (e: any) => {
-        if (!dragging) return;
-
-        const moveX = e.clientX - startX;
-        if (moveX > 0) {
-            // 왼쪽으로 드래그
-            setActiveContainer((prevActiveContainer) => (prevActiveContainer - 1 + 2) % 2);
-        } else if (moveX < 0) {
-            // 오른쪽으로 드래그
-            setActiveContainer((prevActiveContainer) => (prevActiveContainer + 1) % 2);
-        }
-        setStartX(e.clientX); // 드래그가 지속될 경우를 위해 현재 위치 업데이트
+    const handlePrevClick = () => {
+        setActiveContainer(prevActiveContainer => (prevActiveContainer + totalContainers - 1) % totalContainers);
     };
 
     const getTransformValue = () => {
-        const translateValue = activeContainer * -50; // 각 컨테이너가 전체 화면 너비를 차지한다고 가정
+        let translateValue = activeContainer * -33.33333;
+
+        if (activeContainer === totalContainers) {
+            translateValue = 0;
+        }
         return `translateX(${translateValue}%)`;
     };
-    {/* 마우스 이벤트 업데이트 필요함. */}
+    {/* 마우스 이벤트 업데이트 필요함. */ }
 
     return (
-        <MainContainer
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}>
-            <ArrowLeft onClick={prevContainer}>＜</ArrowLeft>
+        <MainContainer>
+            <ArrowLeft onClick={handlePrevClick}>＜</ArrowLeft>
             <SliderContainer>
                 <ContentContainer style={{ transform: getTransformValue() }}>
                     <Container1>
@@ -68,16 +41,29 @@ const Center: React.FC = () => {
                         </CntDiv>
                     </Container1>
                     <Container2>
-                        <CntDiv>
+                        <CntDiv2>
                             <CntP>100대 기업 점유율 1위</CntP>
                             <CntP>AI Assistant</CntP>
                             <br></br>
                             <CntSpan>더욱 효율적인 업무를 느껴보세요.</CntSpan>
-                        </CntDiv>
+                        </CntDiv2>
                     </Container2>
+                    <Container3>
+                        <CntDiv3>
+                            <CntP>아 집에 가고싶어요.</CntP>
+                            <CntP>칼퇴근이 마렵다.</CntP>
+                            <br></br>
+                            <CntSpan>더욱 칼같은 퇴근을 느껴보세요.</CntSpan>
+                        </CntDiv3>
+                    </Container3>
                 </ContentContainer>
             </SliderContainer>
-            <ArrowRight onClick={nextContainer}>＞</ArrowRight>
+            <ArrowRight onClick={handleNextClick}>＞</ArrowRight>
+            <PageIndicator>
+                {Array.from({ length: totalContainers }).map((_, index) => (
+                    <IndicatorDot key={index} className={activeContainer === index ? 'active' : ''} />
+                ))}
+            </PageIndicator>
         </MainContainer>
     );
 };
@@ -102,7 +88,7 @@ const SliderContainer = styled.div`
 const ContentContainer = styled.div`
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 200%; 
+    width: 300%; 
 `;
 
 const Arrow = styled.div`
@@ -127,19 +113,41 @@ const Arrow = styled.div`
 const ArrowLeft = styled(Arrow)`
     left: 20px;
     &:hover {
-        color: rgb(0, 153, 200); 
-        background-color: rgba(0, 153, 255, 0.15); 
-        box-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+        color: rgba(35,35,35,1); 
+        background-color: rgba(204, 0, 51, 0.15);
+        box-shadow: 0 0 10px rgba(204, 0, 51, 0.75);
     }
 `;
 
 const ArrowRight = styled(Arrow)`
     right: 20px;
     &:hover {
-        color: rgb(0, 153, 200); 
-        background-color: rgba(0, 153, 255, 0.15);
-        box-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+        color: rgba(35,35,35,1); 
+        background-color: rgba(204, 0, 51, 0.15);
+        box-shadow: 0 0 10px rgba(204, 0, 51, 0.75);
     }
+`;
+const PageIndicator = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const IndicatorDot = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+
+  &.active {
+    background-color: rgba(255, 255, 255, 1);
+  }
 `;
 
 const Container1 = styled.div`
@@ -155,21 +163,52 @@ const Container1 = styled.div`
 const Container2 = styled.div`
     width:100%;
     height:850px;
-    opacity:0.85;
+    opacity:0.95;
     background-image: url(${AiBack5});
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
     background-size: 100vw 900px;
 `;
-
+const Container3 = styled.div`
+    width:100%;
+    height:850px;
+    opacity:1;
+    background-image: url(${AiBack6});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 100vw 900px;
+`;
 
 const CntDiv = styled.div`
     position: relative;
     width:500px;
-    height:270px;
+    height:320px;
     top:250px;
     left: 100px;
+    background-color:rgba(0, 0, 0, 0.25);
+
+    border-radius: 10px;
+    `;
+const CntDiv2 = styled.div`
+    position: relative;
+    width:500px;
+    height:270px;
+    top:280px;
+    left: 100px;
+    background-color:rgba(0, 0, 0, 0.25);
+    height:230px;
+    border-radius: 10px;
+    `;
+const CntDiv3 = styled.div`
+    position: relative;
+    width:500px;
+    top:300px;
+    left: 100px;
+    background-color:rgba(0, 0, 0, 0.25);
+    height:230px;
+    border-radius: 10px;
     `;
 
 
