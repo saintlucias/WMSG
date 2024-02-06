@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import AiBack4 from '../images/Ai_Back4.jpg';
 import AiBack5 from '../images/Ai_Back5.jpg';
 import AiBack6 from '../images/Ai_Back6.jpg';
@@ -28,7 +28,7 @@ const Center: React.FC = () => {
 
     return (
         <MainContainer>
-            <ArrowLeft onClick={handlePrevClick}>＜</ArrowLeft>
+            <ArrowLeft onClick={handlePrevClick}><strong>＜</strong></ArrowLeft>
             <SliderContainer>
                 <ContentContainer style={{ transform: getTransformValue() }}>
                     <Container1>
@@ -58,7 +58,7 @@ const Center: React.FC = () => {
                     </Container3>
                 </ContentContainer>
             </SliderContainer>
-            <ArrowRight onClick={handleNextClick}>＞</ArrowRight>
+            <ArrowRight onClick={handleNextClick}><strong>＞</strong></ArrowRight>
             <PageIndicator>
                 {Array.from({ length: totalContainers }).map((_, index) => (
                     <IndicatorDot key={index} className={activeContainer === index ? 'active' : ''} />
@@ -113,7 +113,7 @@ const Arrow = styled.div`
 const ArrowLeft = styled(Arrow)`
     left: 20px;
     &:hover {
-        color: rgba(35,35,35,1); 
+        color: rgba(0,53,255, 1); 
         background-color: rgba(204, 0, 51, 0.15);
         box-shadow: 0 0 10px rgba(204, 0, 51, 0.75);
     }
@@ -122,7 +122,7 @@ const ArrowLeft = styled(Arrow)`
 const ArrowRight = styled(Arrow)`
     right: 20px;
     &:hover {
-        color: rgba(35,35,35,1); 
+        color: rgba(0,103,255, 1); 
         background-color: rgba(204, 0, 51, 0.15);
         box-shadow: 0 0 10px rgba(204, 0, 51, 0.75);
     }
@@ -146,7 +146,7 @@ const IndicatorDot = styled.div`
   transition: background-color 0.3s ease;
 
   &.active {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: White;
   }
 `;
 
@@ -156,7 +156,7 @@ const Container1 = styled.div`
     opacity:0.85;
     background-image: url(${AiBack4});
     background-repeat: no-repeat;
-    background-attachment: fixed;
+
     background-position: center center;
     background-size: 100vw 900px;
 `;
@@ -166,7 +166,7 @@ const Container2 = styled.div`
     opacity:0.95;
     background-image: url(${AiBack5});
     background-repeat: no-repeat;
-    background-attachment: fixed;
+
     background-position: center center;
     background-size: 100vw 900px;
 `;
@@ -176,39 +176,49 @@ const Container3 = styled.div`
     opacity:1;
     background-image: url(${AiBack6});
     background-repeat: no-repeat;
-    background-attachment: fixed;
+
     background-position: center center;
     background-size: 100vw 900px;
 `;
 
 const CntDiv = styled.div`
     position: relative;
-    width:500px;
-    height:320px;
+    width:max(30vw,420px);
+    height:max(320px,150px);
     top:250px;
-    left: 100px;
+    left: 95px;
     background-color:rgba(0, 0, 0, 0.25);
-
     border-radius: 10px;
+
+    @media (max-width: 900px) {
+        width:420px;
+     }
     `;
 const CntDiv2 = styled.div`
     position: relative;
-    width:500px;
-    height:270px;
+    width:max(30vw,420px);
+    height:max(250px,120px);
     top:280px;
-    left: 100px;
+    left: 95px;
     background-color:rgba(0, 0, 0, 0.25);
-    height:230px;
+
     border-radius: 10px;
+    @media (max-width: 900px) {
+        width:420px;
+     }
     `;
 const CntDiv3 = styled.div`
     position: relative;
-    width:500px;
+    width:max(30vw,420px);
+    height:max(250px,100px);
     top:300px;
-    left: 100px;
+    left: 95px;
     background-color:rgba(0, 0, 0, 0.25);
-    height:230px;
     border-radius: 10px;
+
+    @media (max-width: 900px) {
+        width:420px;
+     }
     `;
 
 
@@ -219,7 +229,7 @@ const CntP = styled.span`
     flex-direction: column;
     font-family: sh_Bold;
     color: white;
-    font-size:max(50px, 30px);
+    font-size:max(2.5vw, 35px);
     padding:15px;
 `;
 const CntSpan = styled.span`
@@ -228,6 +238,6 @@ const CntSpan = styled.span`
     z-index:9998;
     font-weight:600;
     color: white;
-    font-size:max(20px, 18px);
+    font-size:max(1vw, 18px);
     padding:15px;
 `;
