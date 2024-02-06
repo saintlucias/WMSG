@@ -36,15 +36,13 @@ const Center: React.FC = () => {
                             <CntP>쉬운 협업툴</CntP>
                             <CntP>블루캡슐 AI에</CntP>
                             <CntP>메신저를 더하다.</CntP>
-                            <br></br>
                             <CntSpan>메신저에 AI 를 더하여 더욱 효율적인 업무를 누리다.</CntSpan>
                         </CntDiv>
                     </Container1>
                     <Container2>
                         <CntDiv2>
                             <CntP>100대 기업 점유율 1위</CntP>
-                            <CntP>AI Assistant</CntP>
-                            <br></br>
+                            <CntP>구축형 AI 협업툴</CntP>
                             <CntSpan>더욱 효율적인 업무를 느껴보세요.</CntSpan>
                         </CntDiv2>
                     </Container2>
@@ -52,7 +50,6 @@ const Center: React.FC = () => {
                         <CntDiv3>
                             <CntP>아 집에 가고싶어요.</CntP>
                             <CntP>칼퇴근이 마렵다.</CntP>
-                            <br></br>
                             <CntSpan>더욱 칼같은 퇴근을 느껴보세요.</CntSpan>
                         </CntDiv3>
                     </Container3>
@@ -153,12 +150,12 @@ const IndicatorDot = styled.div`
 const Container1 = styled.div`
     width:100%;
     height:850px;
-    opacity:0.85;
+    opacity:0.95;
     background-image: url(${AiBack4});
     background-repeat: no-repeat;
-
     background-position: center center;
     background-size: 100vw 900px;
+
 `;
 const Container2 = styled.div`
     width:100%;
@@ -166,7 +163,6 @@ const Container2 = styled.div`
     opacity:0.95;
     background-image: url(${AiBack5});
     background-repeat: no-repeat;
-
     background-position: center center;
     background-size: 100vw 900px;
 `;
@@ -176,7 +172,6 @@ const Container3 = styled.div`
     opacity:1;
     background-image: url(${AiBack6});
     background-repeat: no-repeat;
-
     background-position: center center;
     background-size: 100vw 900px;
 `;
@@ -191,9 +186,15 @@ const CntDiv = styled.div`
     border-radius: 10px;
 
     @media (max-width: 900px) {
+        display:grid;
+        margin:auto;
+        justify-content:center;
+        align-items:center;
+        left:0;
         width:420px;
+        margin:auto;
      }
-    `;
+`;
 const CntDiv2 = styled.div`
     position: relative;
     width:max(30vw,420px);
@@ -201,12 +202,18 @@ const CntDiv2 = styled.div`
     top:280px;
     left: 95px;
     background-color:rgba(0, 0, 0, 0.25);
-
     border-radius: 10px;
+
     @media (max-width: 900px) {
+        display:grid;
+        margin:auto;
+        justify-content:center;
+        align-items:center;
+        left:0;
         width:420px;
+        margin:auto;
      }
-    `;
+`;
 const CntDiv3 = styled.div`
     position: relative;
     width:max(30vw,420px);
@@ -217,7 +224,13 @@ const CntDiv3 = styled.div`
     border-radius: 10px;
 
     @media (max-width: 900px) {
+        display:grid;
+        margin:auto;
+        justify-content:center;
+        align-items:center;
+        left:0;
         width:420px;
+        margin:auto;
      }
     `;
 
@@ -231,8 +244,13 @@ const CntP = styled.span`
     color: white;
     font-size:max(2.5vw, 35px);
     padding:15px;
+
+    @media (max-width: 900px) {
+        text-align:center;
+     }
 `;
 const CntSpan = styled.span`
+    display:flex;
     position:relative;
     font-family: sh_Light;
     z-index:9998;
@@ -240,4 +258,10 @@ const CntSpan = styled.span`
     color: white;
     font-size:max(1vw, 18px);
     padding:15px;
+    
+
+    @media (max-width: 900px) {
+        margin:auto;
+        text-align:center;
+     }
 `;
