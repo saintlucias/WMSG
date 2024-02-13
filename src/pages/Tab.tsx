@@ -50,6 +50,7 @@ const FixedDiv = styled.div`
     position:fixed;
     font-family: sh_Bold;
     z-index:9999;
+    user-select: none;
 `;
 const AdContainer = styled.div`
     display: flex;

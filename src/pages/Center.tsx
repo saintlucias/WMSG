@@ -94,6 +94,7 @@ const MainContainer = styled.div`
     justify-content: center;
     position: relative;
     margin-top:35px;
+    user-select: none;
 
 `;
 
