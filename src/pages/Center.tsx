@@ -45,7 +45,6 @@ const Center: React.FC = () => {
         }
         return `translateX(${translateValue}%)`;
     };
-    {/* 마우스 이벤트 업데이트 필요함. */ }
 
     return (
         <MainContainer>

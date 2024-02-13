@@ -5,6 +5,7 @@ import Center from "./Center";
 
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
+import IntroProject from "./IntroProject";
 
 const MainStage: React.FC = () => {
 
@@ -26,6 +27,7 @@ const MainStage: React.FC = () => {
                     App page
                 </BtnMS>
             </AppContainer>
+            <IntroProject/>
             <TestCon></TestCon>
             <TestCon></TestCon>
             <TestCon></TestCon>
