@@ -78,6 +78,11 @@ const SetContainer = styled.div`
     display:grid;
     margin-top: 100px;
     margin-bottom: 60px;
+
+
+    @media (max-width: 1100px) {
+        text-align: center;
+     }
 `;
 
 const CompanyContainer = styled.div`
@@ -85,6 +90,11 @@ const CompanyContainer = styled.div`
     margin:auto;
     margin-top:20px;
     justify-content: center;
+
+    @media (max-width: 1100px) {
+        display: grid;
+        margin-top:0px;
+     }
     `;
 const PositionDiv = styled.div`
     display:grid;
@@ -92,6 +102,7 @@ const PositionDiv = styled.div`
     height:60px;
     margin-top: 25px;
     margin-left:20px;
+    min-width:130px;
 `;
 const AdCompany = styled.div`
     display: flex;
@@ -110,22 +121,24 @@ const AdCompany = styled.div`
         background-color:rgba(50, 183, 255, 0.25);
         color:rgba(50, 53, 255, 1);
     }
+
+    @media (max-width: 1100px) {
+        margin-bottom:20px;
+     }
 `;
 const Imgsbox = styled.div` 
-    position:relative;
     height:60px;
-    top:20px;
-    left:40px;
-
+    margin-left: 20px;
+    margin-top:20px;
 `;
 const Imgbox = styled.img`
-    height:65px;
+    width:max(150px,110px);
+    height:max(80px, 60px);
 `;
 const ImgboxMirae = styled.div`
-    position: relative;
-    top:15px;
-    left:75px;
     height:65px;
+    margin-left: 35px;
+    margin-top:15px;
 `;
 
 const FlagsIconImage = styled.img`
@@ -141,6 +154,12 @@ const Normalspan = styled.span`
     color: rgba(0,53,200, 1);
     margin:auto;
     margin-bottom:40px;
+
+    @media (max-width: 1100px) {
+        margin-top:15px;
+        font-size:25px;
+     }
+
 `;
 const Category = styled.span`
     font-family: sh_Bold;
