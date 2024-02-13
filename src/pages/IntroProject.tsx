@@ -15,30 +15,42 @@ const IntroProject: React.FC = () => {
             </SetContainer>
             <CompanyContainer>
                 <AdCompany>
-                    <Category>제조·유통  ➔</Category>
-                    <SubTitle>업무 자동화 20%</SubTitle>
+                    <PositionDiv>
+                        <Category>제조·유통  ➔</Category>
+                        <SubTitle>업무 자동화 20%</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
                 <AdCompany>
-                    <Category>금융·공공  ➔</Category>
-                    <SubTitle>매출 성과 150%</SubTitle>
+                    <PositionDiv>
+                        <Category>금융·공공  ➔</Category>
+                        <SubTitle>매출 성과 150%</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
                 <AdCompany>
-                    <Category>IT  ➔</Category>
-                    <SubTitle>150만 유저 이슈 처리</SubTitle>
+                    <PositionDiv>
+                        <Category>IT  ➔</Category>
+                        <SubTitle>150만 유저 이슈 처리</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
             </CompanyContainer>
             <CompanyContainer>
                 <AdCompany>
-                    <Category>건설  ➔</Category>
-                    <SubTitle>매주 900분 창의적 작업</SubTitle>
+                    <PositionDiv>
+                        <Category>건설  ➔</Category>
+                        <SubTitle>매주 900분 창의적 작업</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
                 <AdCompany>
-                    <Category>프랜차이즈</Category>
-                    <SubTitle>전국 3100개 매장 관리</SubTitle>
+                    <PositionDiv>
+                        <Category>프랜차이즈</Category>
+                        <SubTitle>전국 3,100개 매장 관리</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
                 <AdCompany>
-                    <Category>학교·교육  ➔</Category>
-                    <SubTitle>회의 시간 60% 단축</SubTitle>
+                    <PositionDiv>
+                        <Category>학교·교육  ➔</Category>
+                        <SubTitle>회의 시간 60% 단축</SubTitle>
+                    </PositionDiv>
                 </AdCompany>
             </CompanyContainer>
         </IntroContainer>
@@ -65,7 +77,13 @@ const CompanyContainer = styled.div`
     margin-top:20px;
     justify-content: center;
     `;
-
+const PositionDiv = styled.div`
+    display:grid;
+    width:auto;
+    height:60px;
+    margin-top: 25px;
+    margin-left:20px;
+`;
 const AdCompany = styled.div`
     position:relative;
     width:350px;
@@ -98,11 +116,11 @@ const Normalspan = styled.span`
     margin:auto;
     margin-bottom:40px;
 `;
-const Category = styled.p`
+const Category = styled.span`
     font-family: sh_Bold;
     font-size: 19px;
 `;
-const SubTitle = styled.p`
+const SubTitle = styled.span`
     font-family: sh_Light;
     font-size:14px;
     font-weight: 600;
