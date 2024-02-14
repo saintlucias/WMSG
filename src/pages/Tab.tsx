@@ -169,19 +169,19 @@ const TabLoginContainer = styled.div`
 `;
 const BtnConsult = styled.button`
     width:max(5vw,70px);
-    border: none;
+    border: 2px solid transparent;
     height: 40px;
-    border-radius: 5px;
     color: rgb(0,153,255);
     min-width:70px;
     font-family: sh_Light;
     font-weight: bold;
     background-color: transparent;
+    cursor:pointer;
 
     &: hover {
         color: rgba(0,53,255, 0.8);
         font-family:sh_Bold;
-        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
+        border-bottom:2px solid rgb(0,153,255);
     }
 
     @media (max-width: 900px) {
@@ -193,17 +193,18 @@ const BtnLogin = styled.button`
     height: 40px;
     margin-left:10px;
     border-radius: 5px;
-    border: 1px solid rgba(55, 155, 205, 0.5);
+    border: 1px solid transparent;
+    background-color: white;
     font-family: sh_Light;
     font-weight: bold;
     color: rgb(0,153,255);
+    cursor:pointer;
     
 
     &: hover {
         color: rgba(0,53,255, 0.8);
-        border: 1px solid rgba(0,53,255, 0.8);
+        border: 1px solid rgb(0,153,255);
         font-family:sh_Bold;
-        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
     }
     @media (max-width: 900px) {
         position:relative;
@@ -221,11 +222,11 @@ const BtnRegistration = styled.button`
     font-weight: 200;
     background-color: rgb(0,153,255);
     color: white;
+    cursor:pointer;
 
     &: hover {
         background-color: rgba(0,53,255, 0.8);
         font-family:sh_Bold;
-        box-shadow: 1px 4px 1px 1px rgba(0, 0, 0, 0.05);
     }
     @media (max-width: 900px) {
         position:relative;

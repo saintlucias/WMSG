@@ -4,7 +4,17 @@ import FlagsIcon from '../images/Flags.png';
 import '../css/font.css';
 import KT from '../images/kt.webp';
 import Mirae from '../images/mirae.webp';
+import Samsung from '../images/Samsung.webp';
+import Ediya from '../images/Ediya.webp';
+import Hyundai from '../images/Hyundai.webp';
+import SeoulUniv from '../images/Seouluniv.webp';
 
+import Proj1 from '../images/proj-img-01.webp'
+import Proj2 from '../images/proj-img-02.webp'
+import Proj3 from '../images/proj-img-03.webp'
+import Proj4 from '../images/proj-img-04.webp'
+import Proj5 from '../images/proj-img-05.webp'
+import Proj6 from '../images/proj-img-06.webp'
 
 const IntroProject: React.FC = () => {
 
@@ -21,6 +31,12 @@ const IntroProject: React.FC = () => {
                         <Category>제조·유통  ➲</Category>
                         <SubTitle>업무 자동화 20%</SubTitle>
                     </PositionDiv>
+                    <ImgboxSamsung>
+                        <Imgbox src={Samsung} alt="No image."/>
+                    </ImgboxSamsung>
+                    <Projimgbox>
+                        <Projimg src={Proj1} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
                 <AdCompany>
                     <PositionDiv>
@@ -30,15 +46,21 @@ const IntroProject: React.FC = () => {
                     <ImgboxMirae>
                         <Imgbox src={Mirae} alt="No image."/>
                     </ImgboxMirae>
+                    <Projimgbox>
+                        <Projimg src={Proj2} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
                 <AdCompany>
                     <PositionDiv>
                         <Category>IT ➲</Category>
                         <SubTitle>150만 유저 이슈 처리</SubTitle>
                     </PositionDiv>
-                    <Imgsbox>
+                    <ImgboxKt>
                         <Imgbox src={KT} alt="No image."/>
-                    </Imgsbox>
+                    </ImgboxKt>
+                    <Projimgbox>
+                        <Projimg src={Proj3} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
             </CompanyContainer>
             <CompanyContainer>
@@ -47,18 +69,36 @@ const IntroProject: React.FC = () => {
                         <Category>건설 ➲</Category>
                         <SubTitle>매주 900분 창의적 작업</SubTitle>
                     </PositionDiv>
+                    <ImgboxHyundai>
+                        <Imgbox src={Hyundai} alt="No image."/>
+                    </ImgboxHyundai>
+                    <Projimgbox>
+                        <Projimg src={Proj4} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
                 <AdCompany>
                     <PositionDiv>
                         <Category>프랜차이즈 ➲</Category>
                         <SubTitle>전국 3,100개 매장 관리</SubTitle>
                     </PositionDiv>
+                    <ImgboxEdiya>
+                        <Imgbox src={Ediya} alt="No image."/>
+                    </ImgboxEdiya>
+                    <Projimgbox>
+                        <Projimg src={Proj5} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
                 <AdCompany>
                     <PositionDiv>
                         <Category>학교·교육  ➲</Category>
                         <SubTitle>회의 시간 60% 단축</SubTitle>
                     </PositionDiv>
+                    <ImgboxSeoulUniv>
+                        <Imgbox src={SeoulUniv} alt="No image."/>
+                    </ImgboxSeoulUniv>
+                    <Projimgbox>
+                        <Projimg src={Proj6} alt="No image" />
+                    </Projimgbox>
                 </AdCompany>
             </CompanyContainer>
         </IntroContainer>
@@ -126,20 +166,51 @@ const AdCompany = styled.div`
         margin-bottom:20px;
      }
 `;
-const Imgsbox = styled.div` 
-    height:60px;
-    margin-left: 20px;
-    margin-top:20px;
-`;
 const Imgbox = styled.img`
     width:max(150px,110px);
-    height:max(80px, 60px);
+    height:60px;
+`;
+const ImgboxKt = styled.div` 
+    height:60px;
+    margin-left: 25px;
+    margin-top:20px;
 `;
 const ImgboxMirae = styled.div`
     height:65px;
     margin-left: 35px;
     margin-top:15px;
 `;
+const ImgboxSamsung = styled.div`
+    margin-top:17.5px;
+    margin-left:25px;
+    height:65px;
+`;
+const ImgboxHyundai = styled.div`
+    margin-top: 17.5px;
+    margin-left:30px;
+    height:65px;
+`;
+const ImgboxEdiya = styled.div`
+    margin-top: 17.5px;
+    margin-left:25px;
+    height:60px;
+`;
+const ImgboxSeoulUniv = styled.div`
+    margin-top: 20px;
+    margin-left:27.5px;
+    height:65px;
+`;
+const Projimgbox = styled.div`
+     position: absolute;
+     margin-top:105px;
+     margin-left:25px;
+`; 
+const Projimg = styled.img`
+     width:300px;
+     height:120px;
+     border-radius: 5px;
+`; 
+
 
 const FlagsIconImage = styled.img`
     width:300px;
@@ -181,6 +252,7 @@ const GoProjectBtn = styled.button`
     border: none;
     color:white;
     background-color: rgb(20,123, 255);
+    cursor: pointer;
 
     &:hover {
         background-color:rgba(50, 183, 255, 1);
