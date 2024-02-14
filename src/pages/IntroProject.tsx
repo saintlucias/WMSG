@@ -62,8 +62,6 @@ const IntroProject: React.FC = () => {
                         <Projimg src={Proj3} alt="No image" />
                     </Projimgbox>
                 </AdCompany>
-            </CompanyContainer>
-            <CompanyContainer>
                 <AdCompany>
                     <PositionDiv>
                         <Category>건설 ➲</Category>
@@ -110,7 +108,6 @@ export default IntroProject;
 const IntroContainer = styled.div`
     width:100%;
     height:1000px; 
-    position: absolute;
     user-select: none;
 `;
 
@@ -119,7 +116,6 @@ const SetContainer = styled.div`
     margin-top: 100px;
     margin-bottom: 60px;
 
-
     @media (max-width: 1100px) {
         text-align: center;
      }
@@ -127,9 +123,11 @@ const SetContainer = styled.div`
 
 const CompanyContainer = styled.div`
     display: flex;
+    width:70vw;
     margin:auto;
     margin-top:20px;
     justify-content: center;
+    flex-wrap: wrap;
 
     @media (max-width: 1100px) {
         display: grid;
@@ -141,29 +139,30 @@ const PositionDiv = styled.div`
     width:auto;
     height:60px;
     margin-top: 25px;
-    margin-left:20px;
+    margin-left:22.5px;
     min-width:130px;
 `;
 const AdCompany = styled.div`
     display: flex;
     width:350px;
     height:250px;
-    background-color:rgba(50, 153, 255, 0.2);
+    background-color:rgba(0, 153, 255, 0.2);
     border-radius:4px;
     border: 1px ridge transparent;
     cursor: pointer;
+    margin-top:20px;
     margin-right:10px;
     margin-left:10px;
     min-width: 250px;
 
     &:hover {
         border: 1px ridge rgba(50, 183, 255, 0.55);
-        background-color:rgba(50, 183, 255, 0.25);
+        background-color:rgba(0, 153, 255, 0.35);
         color:rgba(50, 53, 255, 1);
     }
 
     @media (max-width: 1100px) {
-        margin-bottom:20px;
+        margin-bottom:10px;
      }
 `;
 const Imgbox = styled.img`
@@ -187,7 +186,7 @@ const ImgboxSamsung = styled.div`
 `;
 const ImgboxHyundai = styled.div`
     margin-top: 17.5px;
-    margin-left:30px;
+    margin-left:27.5px;
     height:65px;
 `;
 const ImgboxEdiya = styled.div`
@@ -208,7 +207,8 @@ const Projimgbox = styled.div`
 const Projimg = styled.img`
      width:300px;
      height:120px;
-     border-radius: 5px;
+     border-radius: 3px;
+     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.0125);
 `; 
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BCSLogoImage from '../images/bluecapsule.jpg';
 import '../css/font.css';
+import Paperbutton from '../images/ico-product-intro.svg';
 
 
 
@@ -37,6 +38,10 @@ const Tab: React.FC = () => {
                     </HamburgerIcon>
 
                 </TabLoginContainer>
+                <ButtonContainer>
+                    <Paperbtn src={Paperbutton} alt="No image"/>
+                    <BtnGet>　　　　뭔가를 받기</BtnGet>
+                </ButtonContainer>
             </Container>
         </FixedDiv>
     )
@@ -44,6 +49,41 @@ const Tab: React.FC = () => {
 }
 
 export default Tab;
+
+const Paperbtn = styled.img`
+    position:absolute;
+    height:55px;
+    cursor:pointer;
+    margin-left:-115px;
+    margin-top:-10px;
+`;
+
+const ButtonContainer = styled.div`
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    
+`;
+const BtnGet = styled.button`
+    font-family: sh_Bold;
+    border: none;
+    background: linear-gradient(to right, rgb(255,152,152), rgb(243,243,243), rgb(0,153,255));
+    color:black;
+    width:200px;
+    height:50px;
+    border-radius: 5px;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0px 6px 6px 2px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        color:white;
+        background: linear-gradient(to right, rgb(0, 183, 255), rgb(233, 30, 99), rgb(104, 58, 183));
+    }
+`;
 
 const FixedDiv = styled.div`
     width:100%;
