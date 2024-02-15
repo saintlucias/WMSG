@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import AiBack4 from '../images/Ai_Back4.jpg';
-import AiBack5 from '../images/Ai_Back5.jpg';
-import AiBack6 from '../images/Ai_Back6.jpg';
+import AiBack5 from '../images/Mediaback.jpg';
+import AiBack6 from '../images/Mediaback2.jpg';
 
 const Center: React.FC = () => {
     const [activeContainer, setActiveContainer] = useState(0);
@@ -172,7 +172,7 @@ const IndicatorDot = styled.div`
 const Container1 = styled.div`
     width:100%;
     height:850px;
-    opacity:0.95;
+    opacity:1;
     background-image: url(${AiBack4});
     background-repeat: no-repeat;
     background-position: center center;
@@ -182,7 +182,7 @@ const Container1 = styled.div`
 const Container2 = styled.div`
     width:100%;
     height:850px;
-    opacity:0.95;
+    opacity:1;
     background-image: url(${AiBack5});
     background-repeat: no-repeat;
     background-position: center center;
@@ -204,7 +204,7 @@ const CntDiv = styled.div`
     height:max(320px,150px);
     top:250px;
     left: 95px;
-    background-color:rgba(0, 0, 0, 0.25);
+    background-color:rgba(0, 0, 0, 0.65);
     border-radius: 10px;
 
     @media (max-width: 900px) {
@@ -223,7 +223,7 @@ const CntDiv2 = styled.div`
     height:max(250px,120px);
     top:280px;
     left: 95px;
-    background-color:rgba(0, 0, 0, 0.25);
+    background-color:rgba(0, 0, 0, 0.65);
     border-radius: 10px;
 
     @media (max-width: 900px) {
@@ -242,7 +242,7 @@ const CntDiv3 = styled.div`
     height:max(250px,100px);
     top:300px;
     left: 95px;
-    background-color:rgba(0, 0, 0, 0.25);
+    background-color:rgba(0, 0, 0, 0.65);
     border-radius: 10px;
 
     @media (max-width: 900px) {
