@@ -107,7 +107,8 @@ export default IntroProject;
 
 const IntroContainer = styled.div`
     width:100%;
-    height:1000px; 
+    height:auto; 
+    margin-bottom:200px;
     user-select: none;
 `;
 
