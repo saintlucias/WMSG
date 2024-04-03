@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import IntroProject from "./IntroProject";
 import MostPick from "./MostPick";
+import ViewMap from "./ViewMap";
 
 const MainStage: React.FC = () => {
 
@@ -27,6 +28,8 @@ const MainStage: React.FC = () => {
             <IntroProject/>
 
             <MostPick/>
+            
+            <ViewMap />
         </>
     )
 }
